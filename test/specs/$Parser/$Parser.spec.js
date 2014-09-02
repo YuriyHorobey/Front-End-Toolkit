@@ -94,7 +94,7 @@ describe(
 				expect(view.$markers.myData.attr('id')).toBe('my-data');
 				
 				fxt.cleanUp();
-		        fxt.clearCache();
+		        fxt.clearCache(); 
 			});
 
 			it('should use callback $takeMarker when available', function() {
