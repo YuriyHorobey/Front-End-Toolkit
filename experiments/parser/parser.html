@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Parser test</title>
+<script type="text/javascript" src="../../vendor/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../utils.js"></script>
+<script type="text/javascript" src="../../src/$Parser.js"></script>
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						var html='<form><input data-marker="userName" type="text"><input type="submit" value="send" data-marker="submitButton"></form>';
+						var $tpl = $(html);
+						var markers = {};
+						var f = $tpl.find('[data-marker]').each(
+								function(idx, el) {
+									var $el = $(el);
+									markers[$el.attr('data-marker')] = $el;
+								});
+						$('[data-marker]').each(function(idx, el) {
+							var $el = $(el);
+							markers[$el.attr('data-marker')] = $el;
+						});
+						markers.userName.val('Hi there!')
+						markers.Title.html("Test page");
+						markers.Title.val("Test page2");
+						//markers.container.append($tpl);
+						
+						var $p=new $Parser();
+						var obj;
+						obj=new Object();
+						$p.parse(html, obj);
+						dbg(obj,'o1');
+						
+						obj=new Object();
+						$p.parse($tpl, obj);
+						dbg(obj,'o2');
+						
+						obj=new Object();
+						$p.parse(document, obj);
+						dbg(obj,'o3');
+						
+						
+						markers.container.append($tpl);
+					});
+</script>
+</head>
+<body>
+	<h1 data-marker="Title"></h1>
+	<div data-marker="container">Default content</div>
+</body>
+</html>
