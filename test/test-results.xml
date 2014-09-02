@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 36.0.1985 (Windows 8.1)" package="" timestamp="2014-09-02T17:30:23" id="0" hostname="YuriyHorobey">
+  <testsuite name="Chrome 36.0.1985 (Windows 8.1)" package="" timestamp="2014-09-02T17:54:41" id="0" hostname="YuriyHorobey">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"/>
     </properties>
   </testsuite>
-  <testsuite name="Chrome 36.0.1985 (Windows 8.1)" package="" timestamp="2014-09-02T17:30:24" id="0" hostname="YuriyHorobey" tests="10" errors="0" failures="0" time="0.041">
+  <testsuite name="Chrome 36.0.1985 (Windows 8.1)" package="" timestamp="2014-09-02T17:54:42" id="0" hostname="YuriyHorobey" tests="10" errors="0" failures="0" time="0.055">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"/>
     </properties>
-    <testcase name="should create $markers field if one is ommited" time="0.005" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should not create $markers field if one is present and is an object" time="0.002" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse string" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should create $markers field if one is ommited" time="0.019" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should not create $markers field if one is present and is an object" time="0.003" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse string" time="0.002" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
     <testcase name="should parse jQueryObject" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse Document" time="0.01" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse separated DOM node" time="0.018" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should use callback $takeMarker when available" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse Document" time="0.014" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse separated DOM node" time="0.007" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should use callback $takeMarker when available" time="0.002" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
     <testcase name="should use callback $takeMarker when available and respect the return value (true: stop processing; false/undefined:continue)" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should throw exception if source is not a string, a DOM node or jQuery object" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
-    <testcase name="should throw exception if view object is missing or not an object" time="0.001" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should throw exception if source is not a string, a DOM node or jQuery object" time="0.002" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
+    <testcase name="should throw exception if view object is missing or not an object" time="0.004" classname="Chrome 36.0.1985 (Windows 8.1).$Parser: "/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
