@@ -22,7 +22,7 @@ var $Config = function() {
 	}
 	function set(path, value) {
 		if (typeof path != 'string' || !path.trim()) {
-			throw new Error('$Config: Invalid path: "' + a + '"');
+			throw new Error('$Config: Invalid path: "' + path + '"');
 		}
 		path = path.trim();
 		var node = _findOrCreateNode(path, true);
