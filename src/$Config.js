@@ -13,9 +13,10 @@ var $Config = function() {
 
 	// public methods
 	function cfg(arg1, arg2) {
-		var ret;
+
 		if (arguments.length == 1) {
-			ret = get(arg1);
+			var ret = get(arg1);
+			return ret;
 		} else {
 			set(arg1, arg2);
 		}
