@@ -45,7 +45,7 @@ module.exports = function(config) {
 
 		// test results reporter to use
 		// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-		reporters : [ 'progress', 'junit', 'coverage' ],
+		reporters : [   ],
 
 		coverageReporter : {
 			reporters : [ {
@@ -93,7 +93,7 @@ module.exports = function(config) {
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
 		//singleRun : false,
-		singleRun : true,
+		singleRun : false,
 
 		junitReporter : {
 			// will be resolved to basePath (in the same way as files/exclude

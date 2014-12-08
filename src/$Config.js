@@ -71,10 +71,11 @@ var $Config = function() {
 					currentNode = node;
 				} else {
 					found = false;
+					break;
 				}
 			}
 		}
 		var ret = found ? currentNode : null;
-		return currentNode;
+		return ret;
 	}
 };

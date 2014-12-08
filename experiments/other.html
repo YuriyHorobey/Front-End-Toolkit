@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="../src/$Config.js"></script>
+ <script>
+ var c=new $Config();
+ c.set('some/long/path 1', 111);
+ c.set('some/long/path 2', 222);
+ c.set('some/long',1);
+ dbg(c.get('some/long/path 2'))
+ dbg(c.cfg('some/long'))
+ </script>
+ 
+</head>
+<body>
+
+</body>
+</html>
