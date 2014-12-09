@@ -1,10 +1,10 @@
-var $Config = function() {
+var $JSONAcccess = function() {
 	// private fields
 	var _db = {};
 
 	// public methods reveled
 	return {
-		cfg : cfg,
+		val : val,
 		set : set,
 		get : get,
 		merge : merge,
@@ -12,7 +12,7 @@ var $Config = function() {
 	};
 
 	// public methods
-	function cfg(arg1, arg2) {
+	function val(arg1, arg2) {
 
 		if (arguments.length == 1) {
 			var ret = get(arg1);
@@ -22,10 +22,6 @@ var $Config = function() {
 		}
 	}
 	function set(path, value) {
-		if (typeof path != 'string' || !path.trim()) {
-			throw new Error('$Config: Invalid path: "' + path + '"');
-		}
-		path = path.trim();
 		var node = _findOrCreateNode(path, true);
 		node['$val'] = value;
 	}
@@ -38,8 +34,7 @@ var $Config = function() {
 			if (defaultValue != undefined) {
 				ret = defaultValue;
 			} else {
-				throw new Error('$Config: Path "' + path
-						+ '" not found and no default value provided');
+				throw new Error('$JSONAccess: Path "' + path + '" not found and no default value provided');
 			}
 		}
 		return ret;
@@ -54,6 +49,9 @@ var $Config = function() {
 	// private methods
 
 	function _findOrCreateNode(path, doCreate) {
+		if (typeof path != 'string' || !path.trim()) {
+			throw new Error('$JSONAccess: Invalid path: "' + path + '" type: ' + (typeof path));
+		}
 		path = path.toLowerCase().trim();
 		var keys = path.split('/');
 		var currentNode = _db;

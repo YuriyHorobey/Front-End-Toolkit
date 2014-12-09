@@ -1,19 +1,19 @@
 describe(
-		'$Config',
+		'$JSONAcccess',
 		function() {
-			var cfg;
+			var jsa;
 			beforeEach(function() {
-				cfg = new $Config();
+				jsa = new $JSONAcccess();
 			});
 			it('should set and get values', function() {
 				var val_1 = 1;
 				var val_2 = 2;
 
-				cfg.set('some/value_1', val_1);
-				cfg.set('some/value_2', val_2);
+				jsa.set('some/value_1', val_1);
+				jsa.set('some/value_2', val_2);
 
-				expect(cfg.get('some/value_1')).toBe(val_1);
-				expect(cfg.get('some/value_2')).toBe(val_2);
+				expect(jsa.get('some/value_1')).toBe(val_1);
+				expect(jsa.get('some/value_2')).toBe(val_2);
 
 			});
 			it('should get value or default value if value is missing',
@@ -21,10 +21,10 @@ describe(
 						var val_1 = 1;
 						var defValue = 'some default value';
 
-						cfg.set('some/value_1', val_1);
+						jsa.set('some/value_1', val_1);
 
-						expect(cfg.get('some/value_1')).toBe(val_1);
-						expect(cfg.get('some/path/to/missing/value', defValue))
+						expect(jsa.get('some/value_1')).toBe(val_1);
+						expect(jsa.get('some/path/to/missing/value', defValue))
 								.toBe(defValue);
 
 					});
@@ -33,7 +33,7 @@ describe(
 					function() {
 
 						expect(function() {
-							cfg.get('some/path/to/missing/value');
+							jsa.get('some/path/to/missing/value');
 						}).toThrow();
 					});
 		});
