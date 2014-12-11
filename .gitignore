@@ -3,3 +3,5 @@
 .project
 .settings
 test/test-results.xml
+/node_modules
+/out
