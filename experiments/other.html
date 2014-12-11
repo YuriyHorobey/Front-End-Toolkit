@@ -6,12 +6,16 @@
 <script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript" src="../src/$Config.js"></script>
  <script>
- var c=new $Config();
- c.set('some/long/path 1', 111);
- c.set('some/long/path 2', 222);
- c.set('some/long',1);
- dbg(c.get('some/long/path 2'))
- dbg(c.cfg('some/long'))
+ function Person(name){
+	  this.name = name;
+	}
+
+	Person.prototype.greet = function(otherName){
+	  return "Hi " + otherName + ", my name is " + this.name;
+	}
+	
+	var p = new Person('qqq')
+	dbg(p.greet('aaa'))
  </script>
  
 </head>

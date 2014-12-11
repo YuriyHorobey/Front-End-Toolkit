@@ -1,5 +1,5 @@
 var $Parser = function() {
-
+	
 	return {
 		parse : parse
 	};
