@@ -1,5 +1,5 @@
 var $Parser = function() {
-	
+
 	return {
 		parse : parse
 	};
@@ -10,8 +10,7 @@ var $Parser = function() {
 		// 3. jQ object
 		if (typeof src === 'string') {
 			_parse($(src), viewObject);
-		} else if (src instanceof Node
-				&& (src.nodeType == Node.ELEMENT_NODE || src.nodeType == Node.DOCUMENT_NODE)) {
+		} else if (src instanceof Node && (src.nodeType == Node.ELEMENT_NODE || src.nodeType == Node.DOCUMENT_NODE)) {
 			_parse($(src), viewObject);
 		} else if (typeof src === 'object' && typeof src.find == 'function') {
 			_parse(src, viewObject);
@@ -20,7 +19,7 @@ var $Parser = function() {
 		}
 		return this;
 	}
-	;
+	
 
 	function _parse($src, viewObject) {
 		if (typeof viewObject !== 'object') {
@@ -29,20 +28,18 @@ var $Parser = function() {
 		if (!viewObject.$markers || typeof viewObject.$markers !== 'object') {
 			viewObject.$markers = {};
 		}
-		$src.find('[data-marker]').each(
-				function(idx, el) {
-					var $el = $(el);
-					var name = $el.attr('data-marker');
-					var preventDefault = false;
-					if (viewObject.$takeMarker
-							&& typeof viewObject.$takeMarker === 'function') {
-						var tmRes = viewObject.$takeMarker(name, $el, idx);
+		$src.find('[data-marker]').each(function(idx, el) {
+			var $el = $(el);
+			var name = $el.attr('data-marker');
+			var preventDefault = false;
+			if (viewObject.$takeMarker && typeof viewObject.$takeMarker === 'function') {
+				var tmRes = viewObject.$takeMarker(name, $el, idx);
 
-						preventDefault = tmRes == undefined ? false : tmRes;
-					}
-					if (!preventDefault) {
-						viewObject.$markers[name] = $el;
-					}
-				});
+				preventDefault = tmRes == undefined ? false : tmRes;
+			}
+			if (!preventDefault) {
+				viewObject.$markers[name] = $el;
+			}
+		});
 	}
 };
