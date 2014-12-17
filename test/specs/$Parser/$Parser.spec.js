@@ -65,7 +65,7 @@ describe(
 			it('should parse Document', function() {
 				var fxt = jasmine.getFixtures();
 				fxt.fixturesPath = 'base/';
-				fxt.load('specs/$Parser/$Parser.html');
+				fxt.load('test/specs/$Parser/$Parser.html');
 				var view = new Object();
 				
 				$p.parse(document, view);
@@ -83,7 +83,7 @@ describe(
 			it('should parse separated DOM node', function(){
 				var fxt = jasmine.getFixtures();
 				fxt.fixturesPath = 'base/';
-				fxt.load('specs/$Parser/$Parser.html');
+				fxt.load('test/specs/$Parser/$Parser.html');
 				
 				var node = document.getElementById('inner');
 				

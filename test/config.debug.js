@@ -5,7 +5,7 @@ module.exports = function(config) {
 	config.set({
 
 		// base path, that will be used to resolve files and exclude
-		basePath : '',
+		basePath : '../',
 
 		// frameworks to use
 		frameworks : [ 'jasmine' ],
@@ -13,24 +13,24 @@ module.exports = function(config) {
 		// list of files / patterns to load in the browser
 		files : [
 		// sources
-		'../src/**/*.js',
+		'./src/**/*.js',
 		// specs
-		'./specs/**/*.spec.js',
+		'./test/specs/**/*.spec.js',
 		// fixtures
 		{
-			pattern : './specs/**/*.html',
+			pattern : './test/specs/**/*.html',
 			watched : true,
 			served : true,
 			included : false
 		},
 		// 3r parties
 		{
-			pattern : '../vendor/jquery-1.11.1.js',
+			pattern : './vendor/jquery-1.11.1.js',
 			watched : false,
 			served : true,
 			included : true
 		}, {
-			pattern : '../vendor/jasmine-jquery.js',
+			pattern : './vendor/jasmine-jquery.js',
 			watched : false,
 			served : true,
 			included : true
@@ -50,14 +50,14 @@ module.exports = function(config) {
 		coverageReporter : {
 			reporters : [ {
 				type : 'html',
-				dir : 'coverage/'
+				dir : './test/coverage'
 			}
 
-			],
+			]
 		},
 
 		preprocessors : {
-			'../src/**/*.js' : [ 'coverage' ]
+			'./src/**/*.js' : [ 'coverage' ]
 		},
 
 		// web server port
@@ -93,12 +93,6 @@ module.exports = function(config) {
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
 		//singleRun : false,
-		singleRun : false,
-
-		junitReporter : {
-			// will be resolved to basePath (in the same way as files/exclude
-			// patterns)
-			outputFile : 'test-results.xml'
-		}
+		singleRun : false
 	});
 };

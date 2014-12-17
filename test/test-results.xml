@@ -1,33 +1,41 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 38.0.2125 (Windows 8.1)" package="" timestamp="2014-12-08T13:21:10" id="0" hostname="YuriyHorobey" tests="13" errors="0" failures="2" time="0.066">
+  <testsuite name="Chrome 38.0.2125 (Windows 8.1)" package="" timestamp="2014-12-17T12:32:48" id="0" hostname="YuriyHorobey">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"/>
     </properties>
-    <testcase name="should set and get values" time="0.004" classname="Chrome 38.0.2125 (Windows 8.1).$Config"/>
-    <testcase name="should get value or default value if value is missing" time="0.006" classname="Chrome 38.0.2125 (Windows 8.1).$Config">
-      <failure type="">Expected null to be &apos;some default value&apos;.
-Error: Expected null to be &apos;some default value&apos;.
-    at Object.&lt;anonymous&gt; (d:/dev/js/Front-End-Toolkit/test/specs/$Config.spec.js:28:10)
-</failure>
-    </testcase>
-    <testcase name="should throw exception if value is missing and no default one provided" time="0.005" classname="Chrome 38.0.2125 (Windows 8.1).$Config">
-      <failure type="">Expected function to throw an exception.
-Error: Expected function to throw an exception.
-    at Object.&lt;anonymous&gt; (d:/dev/js/Front-End-Toolkit/test/specs/$Config.spec.js:37:10)
-</failure>
-    </testcase>
-    <testcase name="should create $markers field if one is ommited" time="0.012" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should not create $markers field if one is present and is an object" time="0.005" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse string" time="0.003" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse jQueryObject" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse Document" time="0.016" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should parse separated DOM node" time="0.006" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should use callback $takeMarker when available" time="0.003" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should use callback $takeMarker when available and respect the return value (true: stop processing; false/undefined:continue)" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should throw exception if source is not a string, a DOM node or jQuery object" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <testcase name="should throw exception if view object is missing or not an object" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
-    <system-out><![CDATA[
+  </testsuite>
+  <testsuite name="Chrome 38.0.2125 (Windows 8.1)" package="" timestamp="2014-12-17T12:32:48" id="0" hostname="YuriyHorobey" tests="25" errors="0" failures="0" time="0.11">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"/>
+    </properties>
+    <testcase name="should set and get JSON" time="0.007" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should throw an Error when trying to set JSON but argument is not an object" time="0.008" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should clear JSON" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should merge JSON at given non existing path" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should merge JSON as root" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should merge JSON at given existing path" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should throw exceptions on invalid path" time="0.005" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should get values in case insensitive mode regardles of leading trailing spaces" time="0.005" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should get values with val()" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should get  default value if path is missing" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should get value from indexed array" time="0.004" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should throw exception if value is missing and no default one provided" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should throw exception when using val() if value is missing and no default one provided" time="0" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should set values insensitive mode regardles of leading trailing spaces keeping other pathes intact" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should set values with val()" time="0" classname="Chrome 38.0.2125 (Windows 8.1).$JSONAccess"/>
+    <testcase name="should create $markers field if one is ommited" time="0.017" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should not create $markers field if one is present and is an object" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse string" time="0.001" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse jQueryObject" time="0.006" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse Document" time="0.024" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should parse separated DOM node" time="0.008" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should use callback $takeMarker when available" time="0.004" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should use callback $takeMarker when available and respect the return value (true: stop processing; false/undefined:continue)" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should throw exception if source is not a string, a DOM node or jQuery object" time="0.002" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <testcase name="should throw exception if view object is missing or not an object" time="0.003" classname="Chrome 38.0.2125 (Windows 8.1).$Parser: "/>
+    <system-out><![CDATA[Chrome 38.0.2125 (Windows 8.1) LOG: 'http://localhost:9876/absoluteD:/dev/js/Front-End-Toolkit/src/$T.js?94b713046a1ab8f6547a31e6d237450b63d99cf7'
+
 ]]></system-out>
     <system-err/>
   </testsuite>

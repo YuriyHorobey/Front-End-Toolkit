@@ -1,5 +1,5 @@
 function $ServiceProvider() {
-	var _services;
+	var _services = {};
 	return {
 		provides : provides,
 		provide : provide
@@ -7,12 +7,12 @@ function $ServiceProvider() {
 
 	function provides(serviceName, serviceCode, isSingleton) {
 		var serviceDescriptor = new ServiceDescriptor(serviceName, serviceCode, isSingleton);
-		_services.set(serviceName, serviceDescriptor);
+		_services[serviceName] = serviceDescriptor;
 		return serviceDescriptor;
 	}
 
 	function provide(serviceName, throwError) {
-		var serviceCode = _services.get(serviceName, null);
+		var serviceCode = _services.hasOwnProperty[serviceName] ? _services[serviceName] : null;
 		if (serviceCode === null && throwError) {
 			throw new Error('$ServiceProvider: service "' + serviceName + '" not found');
 		}
@@ -26,18 +26,18 @@ function $ServiceProvider() {
 		var _initArguments;
 		return {
 			by : by,
-			asSigleton : asSigleton,
+			asSingleton : asSingleton,
 			initializedWith : initializedWith,
 			get : get
 		};
 
 		function by(serviceCode) {
-			
+
 			return this;
 		}
-		function asSigleton(isSingleton) {
-			if(isSingleton === undefined){
-				isSingleton=true;
+		function asSingleton(isSingleton) {
+			if (isSingleton === undefined) {
+				isSingleton = true;
 			}
 			_isSingleton = Boolean(isSingleton);
 			return this;
@@ -60,11 +60,11 @@ function $ServiceProvider() {
 
 		}
 		function _createService() {
-		    function F() {
-		        return serviceCode.apply(this, _initArguments);
-		    }
-		    F.prototype = serviceCode.prototype;
-		    return new F();
+			function F() {
+				return serviceCode.apply(this, _initArguments);
+			}
+			F.prototype = serviceCode.prototype;
+			return new F();
 		}
 	}
 }
