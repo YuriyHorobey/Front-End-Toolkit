@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../utils.js"></script>
+    <script type="text/javascript" src="../../src/$ServiceProvider.js"></script>
+    <script>
+        var sp = new $ServiceProvider();
+        sp
+                .provides('Abc').by('Abc1')
+                .provides('Ddd').by(function () {
+                    return 'DddMock';
+                }).loadFrom('http://google.com').now();
+        var Abc1 = {
+            f: function () {
+                dbg('Abc1::f()')
+            }
+        }
+
+        var DddMock = {
+            f: function () {
+                dbg('DddMock::f()')
+            }
+        }
+        q = eval('Abc');
+        var Abc = sp.provide('Abc');
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
