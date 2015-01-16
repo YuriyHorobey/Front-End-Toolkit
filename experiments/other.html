@@ -4,7 +4,6 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript" src="utils.js"></script>
-<script type="text/javascript" src="../src/$Config.js"></script>
  <script>
  function Person(name){
 	  this.name = name;
@@ -12,10 +11,10 @@
 
 	Person.prototype.greet = function(otherName){
 	  return "Hi " + otherName + ", my name is " + this.name;
-	}
+	};
 	
-	var p = new Person('qqq')
-	dbg(p.greet('aaa'))
+	var p = new Person('qqq');
+	dbg(p.greet('aaa'));
  </script>
  
 </head>

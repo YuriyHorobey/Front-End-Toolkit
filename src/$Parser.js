@@ -1,4 +1,3 @@
-
 (function $Parser($WT) {
     var $ = $WT.provide('$');
     return {
@@ -53,6 +52,4 @@
             addMarkerToView(name, $el, idx);
         });
     }
-
-    return $Parser;
 })($ServiceProvider);

@@ -211,7 +211,7 @@ describe('$JSONAccess', function () {
     });
 
     // getting/setting
-    it('should get values in case insensitive mode regardles of leading trailing spaces', function () {
+    it('should get values in case insensitive mode regardless of leading trailing spaces', function () {
         jsa.setJSON(json_all);
 
         expect(jsa.get('my / Path')).toBe(json_all.my.path);
@@ -251,7 +251,7 @@ describe('$JSONAccess', function () {
             jsa.val('some/path/to/missing/value');
         }).toThrow();
     });
-    it('should set values insensitive mode regardles of leading trailing spaces keeping other pathes intact', function () {
+    it('should set values insensitive mode regardless of leading trailing spaces keeping other pathes intact', function () {
         var val = 12345;
         var key1 = 'anOther_kEy1 ';
         var key2 = 'anOther_kEy2 ';

@@ -14,11 +14,11 @@ describe(
             provide: function () {
                 return $;
             }
-        }
+        };
             $p = new $Parser();
         });
-        it('should create $markers field if one is ommited', function () {
-            var view = new Object();
+        it('should create $markers field if one is omitted', function () {
+            var view = {};
 
             $p.parse(html, view);
             expect(view.$markers).toBeDefined();
@@ -47,7 +47,7 @@ describe(
 
         });
         it('should not create $markers field if one is present and is an object', function () {
-            var view = new Object();
+            var view = {};
             view.$markers = {a: 1, b: 2};
             $p.parse(html, view);
             expect(Object.keys(view.$markers).length).toEqual(5);
@@ -55,14 +55,14 @@ describe(
             expect(view.$markers.b).toBe(2);
         });
         it('should parse string', function () {
-            var view = new Object();
+            var view = {};
 
             $p.parse(html, view);
             expect(view.$markers.userName).toBeDefined();
             expect(view.$markers.submitButton).toBeDefined();
         });
         it('should parse jQueryObject', function () {
-            var view = new Object();
+            var view = {};
             $p.parse($(html), view);
             expect(view.$markers.userName).toBeDefined();
             expect(view.$markers.submitButton).toBeDefined();
@@ -72,7 +72,7 @@ describe(
             var fxt = jasmine.getFixtures();
             fxt.fixturesPath = 'base/';
             fxt.load('test/specs/$Parser/$Parser.html');
-            var view = new Object();
+            var view = {};
 
             $p.parse(document, view);
             expect(view.$markers.myData).toBeDefined();
@@ -93,7 +93,7 @@ describe(
 
             var node = document.getElementById('inner');
 
-            var view = new Object();
+            var view = {};
             $p.parse(node, view);
             expect(Object.keys(view.$markers).length).toBe(1);
             expect(view.$markers.myData).toBeDefined();
@@ -104,7 +104,7 @@ describe(
         });
 
         it('should use callback $takeMarker when available', function () {
-            var view = new Object();
+            var view = {};
             view.$takeMarker = function (mName, mObj, midx) {
 
             };
@@ -115,7 +115,7 @@ describe(
         it(
             'should use callback $takeMarker when available and respect the return value (true: stop processing; false/undefined:continue)',
             function () {
-                var view = new Object();
+                var view = {};
                 view.$takeMarker = function (mName, mObj, midx) {
                     if (midx == 0) {
                         return;
@@ -137,10 +137,10 @@ describe(
             'should throw exception if source is not a string, a DOM node or jQuery object',
             function () {
                 expect(function () {
-                    $p.parse(123, new Object());
+                    $p.parse(123, {});
                 }).toThrow();
                 expect(function () {
-                    $p.parse(new Object(), new Object());
+                    $p.parse({}, {});
                 }).toThrow();
             });
         it(

@@ -104,10 +104,8 @@ var $JSONAccess = function $JSONAccess() {
      * missing).<br/> If there is also <i>value</i> provided -- works same as
      * {@link $JSONAccess#set}
      *
-     * @param {string}
-     *            path the path
-     * @param {*}
-     *            [value] to be set
+     * @param {string} path the path
+     * @param {*} [value] to be set
      * @throws {Error}
      *             When working as {@link #get } if path is not found.
      */
@@ -125,7 +123,7 @@ var $JSONAccess = function $JSONAccess() {
      * Sets <i>value</i> by given <i>path</i>
      */
     function set(path, value) {
-        var ret;
+
         var keys = _pathToKeys(path);
         var currentNode = _json;
         for (var i = 0; i < keys.length - 1; i++) {
@@ -141,7 +139,7 @@ var $JSONAccess = function $JSONAccess() {
             }
         }
         var lastKey = keys[keys.length - 1];
-        ret = currentNode[lastKey] = value;
+        currentNode[lastKey] = value;
     }
 
     /**
@@ -192,7 +190,7 @@ var $JSONAccess = function $JSONAccess() {
             throw new Error('$JSONAccess: Invalid path: "' + path + '" type: ' + (typeof path));
         }
         path = path.toLowerCase();
-        path = path.replace(/\[(\w+)\]/g, '/$1');  // convert indexes to properties
+        path = path.replace(/\[(\w+)]/g, '/$1');  // convert indexes to properties
 
         var keys = path.split('/');
         for (var i = 0; i < keys.length; i++) {

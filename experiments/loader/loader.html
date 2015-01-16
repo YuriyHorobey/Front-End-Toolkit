@@ -10,7 +10,7 @@
             provide: function () {
                 return $;
             }
-        }
+        };
         var request = $.ajax({
                     url: '/../../src/$Parser.js',
                     dataType: 'text',
@@ -18,7 +18,7 @@
 
                 }
         );
-        request.success(function (data, status) {
+        request.success(function (data) {
             var ptr = /^\s*((var)\s+([^=\s]+))|((function)\s+([^(]+))|(\()/;
             var res = ptr.exec(data);
             if (!res) {
