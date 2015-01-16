@@ -94,7 +94,7 @@ function $ServiceProvider() {
          * @private
          */
         function _checkValidity() {
-return false;
+            return false;
         }
 
         function _locateService() {

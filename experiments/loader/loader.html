@@ -6,22 +6,58 @@
     <script src="../utils.js"></script>
     <script src="../../vendor/jquery-1.11.1.js"></script>
     <script>
-        $ServiceProvider = {
+        $WT = $ServiceProvider = {
             provide: function () {
                 return $;
             }
         }
-        $.get('/../../src/$Parser.js').then(
-                function (data, status) {
-                    var src = ' var constructor = ' + data+'; new constructor;';
-                    var p = eval(src);
+        var request = $.ajax({
+                    url: '/../../src/$Parser.js',
+                    dataType: 'text',
+                    async: true
 
-                    var html = '<div data-marker1="root"><div data-marker="1"><div data-marker="1.1"></div></div></div>';
-                    var view = {};
-                    p.parse(html, view);
-                    dbg(view)
                 }
         );
+        request.success(function (data, status) {
+            var ptr = /^\s*((var)\s+([^=\s]+))|((function)\s+([^(]+))|(\()/;
+            var res = ptr.exec(data);
+            if (!res) {
+                throw new Error('Invalid source code in: xxx')
+            }
+
+            var srcKind = res[2] ? res[2] : res[5] ? res[5] : res[7];
+            var moduleName = res[3] ? res[3] : res[6];
+
+            var src;
+
+            switch (srcKind) {
+                case '(':
+                    src = data;
+                    break;
+                case 'var':
+
+                    src = data.replace(/^\s*var\s+.*=/, '');
+                    src = '\n' + ';new (' + src + ')';
+                    break;
+                case 'function':
+                    src = data + '\n' + ';new (' + moduleName + ')';
+                    break;
+
+            }
+
+            try {
+                var p = eval(src);
+            } catch (e) {
+                throw  new Error('Invalid source code in: "xxx". The error is: ' + e);
+            }
+            var html = '<div data-marker1="root"><div data-marker="1"><div data-marker="1.1"></div></div></div>';
+            var view = {};
+            p.parse(html, view);
+            dbg(view)
+        });
+        request.fail(function (obj, kind, msg) {
+            throw new Error('Request failed with error: ' + msg);
+        });
         //dbg(src);
     </script>
 </head>
