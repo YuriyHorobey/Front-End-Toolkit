@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<script type="text/javascript" src="utils.js"></script>
- <script>
- function Person(name){
-	  this.name = name;
-	}
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="utils.js"></script>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
 
-	Person.prototype.greet = function(otherName){
-	  return "Hi " + otherName + ", my name is " + this.name;
-	};
-	
-	var p = new Person('qqq');
-	dbg(p.greet('aaa'));
- </script>
- 
+        Person.prototype.greet = function (otherName) {
+            return "Hi " + otherName + ", my name is " + this.name;
+        };
+
+        var p = new Person('qqq');
+        dbg(p.greet('aaa'));
+    </script>
+
 </head>
 <body>
 

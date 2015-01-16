@@ -10,11 +10,11 @@ describe(
             + '</form>';
 
         beforeEach(function () {
-        window.$ServiceProvider = {
-            provide: function () {
-                return $;
-            }
-        };
+            window.$ServiceProvider = {
+                provide: function () {
+                    return $;
+                }
+            };
             $p = new $Parser();
         });
         it('should create $markers field if one is omitted', function () {
