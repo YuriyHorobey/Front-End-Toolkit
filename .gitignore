@@ -6,3 +6,4 @@
 test/test-results.xml
 /node_modules
 /out
+/tmp
