@@ -1,2 +1,10 @@
 @charset "utf-8";
-body{font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+body {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+abbr {
+	cursor: help;
+	border-bottom: 1px dotted;
+}
+.glossary-link-from-text {
+}
