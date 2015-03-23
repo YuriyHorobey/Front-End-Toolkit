@@ -1,4 +1,4 @@
-describe(
+xdescribe(
     '$Parser: ',
     function () {
         var $p;

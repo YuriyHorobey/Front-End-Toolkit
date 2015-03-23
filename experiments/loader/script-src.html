@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../utils.js"></script>
+    <script>
+        var testGlobalVar='HTML';
+        var script = document.createElement('script');
+
+        script.src = 'script-src.js';
+        dbg(testGlobalVar,'GV 1')
+        var head = document.getElementsByTagName('head')[0];
+       // head.appendChild(script);
+
+        dbg(testGlobalVar,'GV 2')
+        setTimeout(function(){
+            dbg(testGlobalVar,'GV 3')
+        }, 1000);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
