@@ -83,21 +83,42 @@ describe('ServiceLocator', function () {
     });
 
     it('Should throw exception if trying to register with ID which is neither string or number', function () {
-        expect(function(){SL.register('valid ID')}).not.toThrow();
-        expect(function(){SL.register(111)}).not.toThrow();
+        expect(function () {
+            SL.register('valid ID')
+        }).not.toThrow();
+        expect(function () {
+            SL.register(111)
+        }).not.toThrow();
 
-        expect(function(){SL.register({})}).toThrow();
-        expect(function(){SL.register(null)}).toThrow();
+        expect(function () {
+            SL.register({})
+        }).toThrow();
+        expect(function () {
+            SL.register(null)
+        }).toThrow();
 
-        expect(function(){SL.register(function (){})}).toThrow();
+        expect(function () {
+            SL.register(function () {
+            })
+        }).toThrow();
 
-        expect(function(){SL.register([])}).toThrow();
-        expect(function(){SL.register([1,2,3])}).toThrow();
+        expect(function () {
+            SL.register([])
+        }).toThrow();
+        expect(function () {
+            SL.register([1, 2, 3])
+        }).toThrow();
 
-        expect(function(){SL.register(true)}).toThrow();
-        expect(function(){SL.register(false)}).toThrow();
+        expect(function () {
+            SL.register(true)
+        }).toThrow();
+        expect(function () {
+            SL.register(false)
+        }).toThrow();
 
-        expect(function(){SL.register()}).toThrow();
+        expect(function () {
+            SL.register()
+        }).toThrow();
 
     });
 
@@ -108,11 +129,51 @@ describe('ServiceLocator', function () {
         expect(SL.isIDRegistered('non existing ID')).toBe(false);
     });
 
-    it('Should assign [multiple] pseudos to registered Provider, throwing exception if provider is not registered', function () {
+    it('Should assign pseudos to registered Provider, throwing exception if provider is not registered', function () {
+
+        var id1 = 'id1';
+        var id2 = 'id2';
+
+        var testValue1 = 1;
+        var testValue2 = 2;
+
+        var pseudo1 = 'pseudo1';
+        var pseudo2 = 'pseudo2';
+
+        SL.register(id1, testValue1);
+        SL.register(id2, testValue2);
+
+        SL.map(id1,pseudo1);
+        SL.map(id2,pseudo2);
+
+
+        expect(SL.get(pseudo1)).toBe(testValue1);
+        expect(SL.get(pseudo2)).toBe(testValue2);
+
 
     });
 
+    it('Should assign multiple pseudos to registered Provider, throwing exception if provider is not registered', function () {
+        var id1 = 'id1';
+        var id2 = 'id2';
 
+        var testValue1 = 1;
+        var testValue2 = 2;
+
+        var pseudo1 = 'pseudo1';
+        var pseudo2 = 'pseudo2';
+        var pseudo = [pseudo1,pseudo2];
+
+
+        SL.register(id1, testValue1);
+        SL.register(id2, testValue2);
+
+        SL.map(id1,pseudo);
+
+        expect(SL.get(pseudo1)).toBe(testValue1);
+        expect(SL.get(pseudo2)).toBe(testValue2);
+
+    });
     /*'it' template
      //
      it('Should', function () {
