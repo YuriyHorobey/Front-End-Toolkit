@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="../utils.js"></script>
+
     <script>
-        var testGlobalVar='HTML';
-        var script = document.createElement('script');
+        var testGlobalVar = 'HTML';
 
-        script.src = 'script-src.js';
-        dbg(testGlobalVar,'GV 1')
+
+        dbg(testGlobalVar, 'GV 1')
         var head = document.getElementsByTagName('head')[0];
-       // head.appendChild(script);
-
-        dbg(testGlobalVar,'GV 2')
-        setTimeout(function(){
-            dbg(testGlobalVar,'GV 3')
+        for (var i = 0; i < 1; i++) {
+            var script = document.createElement('script');
+            script.src = 'script-src.js';//?cache=' + Math.random(999);
+            script.async = true;
+            head.appendChild(script);
+            head.removeChild(script);
+            script.onload = loaded;
+        }
+        testGlobalVar = 21;
+        dbg(testGlobalVar, 'GV 2')
+        setTimeout(function () {
+            dbg(testGlobalVar, 'GV 3')
         }, 1000);
+
+        function loaded() {
+            dbg(arguments)
+        }
     </script>
 </head>
 <body>
-
+script-src
 </body>
 </html>

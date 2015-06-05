@@ -1,6 +1,9 @@
-dbg(testGlobalVar,'GV 21')
-var testGlobalVar='LOADED JS';
+(function () {
+	return	function hi(q) {
+		dbg(testGlobalVar, q+'--------------------------GV 21')
+		testGlobalVar = 'loaded js'
+	}
+}())(1);
 
-for(var i=0;i<5;i++){
-    console.log('Loading test');
-}
+var x=1;
+dbg(x);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../utils.js"></script>
+
+    <script>
+        window.onpopstate = function (ev) {
+            dbg(ev.state.id, 'State')
+            // dbg(window.history.state, 'WS')
+            ev.preventDefault();
+
+            return false;
+        }
+        var cnt = 1;
+        function changeState() {
+            var st = {"id": "" + cnt};
+
+            window.history.pushState(st, '', '/experiments/url/url.html?c=' + cnt);
+            cnt++
+            return false;
+        }
+        function repSt() {
+            var st = {"id": "" + cnt};
+
+            window.history.replaceState(st, '', null);
+            cnt++
+
+        }
+    </script>
+
+</head>
+<body>
+<h1>$URL</h1>
+<a href="#" onclick="return changeState()">State</a>
+<button onclick="changeState()">State</button>
+<button onclick="repSt()">reState</button>
+
+</body>
+</html>

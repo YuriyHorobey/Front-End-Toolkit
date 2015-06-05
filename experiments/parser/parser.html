@@ -3,8 +3,8 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Parser test</title>
-    <script type="text/javascript" src="../../src/$Parser.js"></script>
-    <script type="text/javascript" src="../../src/$T.js"></script>
+    <script type="text/javascript" src="../../src/parser/parser.js"></script>
+    <script type="text/javascript" src="../../src/~deprecated/$T.js"></script>
     <script type="text/javascript" src="../../vendor/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="../utils.js"></script>
 
@@ -27,7 +27,7 @@
             markers.Title.val("Test page2");
             //markers.container.append($tpl);
 
-            var $p = new $Parser();
+            var $p = new Parser();
             var obj;
             obj = {};
             $p.parse(html, obj);

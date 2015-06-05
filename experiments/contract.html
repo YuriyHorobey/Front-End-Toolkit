@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="../src/contract/$contract.js"></script>
+    <script>
+        var $c = new Contract();
+        $c.describe('f', {
+            pre:  function (a, b, c) {
+                dbg(a, 'preA');
+                dbg(b, 'preB');
+                dbg(c, 'preC');
+
+            },
+            post: function (ret) {
+                dbg(ret, 'postRet');
+                return ret;
+            }
+        });
+
+        function f(a, b, c) {
+            $c.pre(null, a, b, c);
+            var ret = 1;
+            try {
+                $c.post('f', ret);
+                return ret;
+            } catch (e) {
+                dbg(e)
+            }
+        }
+        var ret = f(1, 2, 3);
+        dbg(ret, 'RET');
+    </script>
+
+</head>
+<body>
+<h1>$Contract</h1>
+</body>
+</html>

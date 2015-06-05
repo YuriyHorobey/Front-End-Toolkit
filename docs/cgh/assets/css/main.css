@@ -3,10 +3,7 @@ body {
     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-abbr {
-    cursor: help;
+acronym {
     border-bottom: 1px dotted;
-}
-
-.glossary-link-from-text {
+    cursor: help;
 }

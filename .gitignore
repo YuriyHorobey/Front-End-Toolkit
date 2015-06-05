@@ -1,9 +1,10 @@
 /vendor
-
+/tmp
+/out
+/docs/tests-coverage
 .project
 .settings
 .idea
 test/test-results.xml
-/node_modules
-/out
-/tmp
+node_modules
+

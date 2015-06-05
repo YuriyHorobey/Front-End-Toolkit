@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>FET Test App</title>
+    <script src="../utils.js"></script>
+    <script src="../../src/service-locator/service-locator.js"></script>
+    <script>
+        var $SL = new ServiceLocator();
+        (function (ServLoc) {
+
+            function xxx() {
+                this.tst = function () {
+                    dbg('xxx.tst()');
+                }
+            }
+
+            ServLoc.register('x', xxx);
+        }($SL));
+    </script>
+</head>
+<body>
+AppTest
+</body>
+</html>
