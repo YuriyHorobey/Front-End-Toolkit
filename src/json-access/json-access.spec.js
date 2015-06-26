@@ -1,10 +1,10 @@
-describe('JSONAccess', function () {
+describe('JsonAccess', function () {
 	var jsa;
 	var json_all = {};
 	var json_1 = {};
 	var json_2 = {};
 	beforeEach(function () {
-		jsa = new JSONAccess();
+		jsa = new JsonAccess();
 		json_all = {
 			my:    {
 				path:  {

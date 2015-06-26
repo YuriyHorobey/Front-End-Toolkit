@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../utils.js"></script>
+    <script type="text/javascript" src="../../src/address-bar/address-bar.js"></script>
+    <script type="text/javascript">
+        ab = new AddressBar(window, location);
+        ab.onhrefchanged = function (ch) {
+            dbg(arguments, "href");
+        }
+        ab.onhashchanged = function (ch) {
+            dbg(arguments, "hash");
+        }
+        var cnt = 1;
+        function changeState() {
+            var st = {"id": "" + cnt};
+
+            window.history.pushState(st, '', '/experiments/address-bar/address-bar.html?c=' + cnt);
+            cnt++
+            return false;
+        }
+        function repSt() {
+            var st = {"id": "" + cnt};
+
+            window.history.replaceState(st, '', null);
+            cnt++
+
+        }
+        window.onpopstate=function(){
+            dbg(11111111)
+        }
+    </script>
+</head>
+<body>
+<a href="#qqq">hash</a>
+<br>
+<a href="?x=1">query 1</a>
+<br>
+<a href="?x=2">query 2</a>
+<br>
+<a href="#" onclick="return changeState()">State</a><br>
+<button onclick="changeState()">State</button>
+<button onclick="repSt()">reState</button>
+</body>
+</html>

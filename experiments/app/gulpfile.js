@@ -8,7 +8,7 @@ var through = require('through2');
 var PATH_FET = '../../src/';
 var PROJECT_FILES = [
 	PATH_FET + 'ServiceLocator.js',
-	PATH_FET + 'JSONAccess.js'
+	PATH_FET + 'JsonAccess.js'
 ];
 
 

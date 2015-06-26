@@ -1,7 +1,7 @@
 /**
  * Created by yuriy.horobey on 2015-04-21.
  */
-describe('Validator', function () {
+xdescribe('Validator', function () {
 	var $V,
 		types = {
 			Boolean:   [true, false],

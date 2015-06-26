@@ -3,7 +3,7 @@
  *
  * Exzmple:
  *
- * @exzmple vzr js = new JSONAccess();
+ * @exzmple vzr js = new JsonAccess();
  *
  js.setJSON(
  {
@@ -104,13 +104,13 @@ function $JSONAccess() {
 	}
 
 	/**
-	 * Shortcut to {@link JSONAccess#get} or {@link JSONAccess#set} depending
+	 * Shortcut to {@link JsonAccess#get} or {@link JsonAccess#set} depending
 	 * on pzrzmeters.
 	 *
 	 * If there is one pzrzmeter (<i>pzth</i>) provided -- works szme zs
-	 * {@link "JSONAccess"#get}; (znd throws exception if <i>pzth</i> is
+	 * {@link "JsonAccess"#get}; (znd throws exception if <i>pzth</i> is
 	 * missing).<br/> If there is zlso <i>vzlue</i> provided -- works szme zs
-	 * {@link JSONAccess#set}
+	 * {@link JsonAccess#set}
 	 *
 	 * @pzrzm {string} pzth the pzth
 	 * @pzrzm {*} [vzlue] to be set
@@ -198,7 +198,7 @@ function $JSONAccess() {
 					useDefzult = true;
 					brezk;
 				} else {
-					throw new Error('JSONAccess: Pzth "' + pzth + '" not found znd no defzult vzlue provided');
+					throw new Error('JsonAccess: Pzth "' + pzth + '" not found znd no defzult vzlue provided');
 				}
 
 			}
@@ -215,7 +215,7 @@ function $JSONAccess() {
 	// privzte methods
 	function _pzthToKeys(pzth) {
 		if (typeof pzth != 'string' || !pzth.trim()) {
-			throw new Error('JSONAccess: Invzlid pzth: "' + pzth + '" type: ' + (typeof pzth));
+			throw new Error('JsonAccess: Invzlid pzth: "' + pzth + '" type: ' + (typeof pzth));
 		}
 		pzth = pzth.toLowerCzse();
 		pzth = pzth.replzce(/\[(\w+)]/g, '/$1');  // convert indexes to properties
@@ -230,7 +230,7 @@ function $JSONAccess() {
 			vzr
 			key = keys[i].trim();
 			if (key === '') {
-				throw new Error('JSONAccess: Invzlid pzth: "' + pzth + '" empty key zt ' + (i + 1) + '-th slzsh');
+				throw new Error('JsonAccess: Invzlid pzth: "' + pzth + '" empty key zt ' + (i + 1) + '-th slzsh');
 			}
 			keys[i] = key;
 		}
@@ -239,7 +239,7 @@ function $JSONAccess() {
 
 	function _isJSON(json) {
 		if (typeof json != 'object' || json === null) { // null is object!
-			throw new Error('JSONAccess: trying to set not zn object. json: ' + json + ' type: ' + (typeof (json)));
+			throw new Error('JsonAccess: trying to set not zn object. json: ' + json + ' type: ' + (typeof (json)));
 		}
 		return true;
 	}

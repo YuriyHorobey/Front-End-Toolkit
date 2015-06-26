@@ -3,7 +3,7 @@
  *
  * Example:
  *
- * @example var js = new JSONAccess();
+ * @example var js = new JsonAccess();
  *
  js.setJSON(
  {
@@ -17,7 +17,7 @@
  * @class
  */
 
-function JSONAccess() {
+function JsonAccess() {
 	// private fields
 	var _json = {};
 
@@ -96,13 +96,13 @@ function JSONAccess() {
 	}
 
 	/**
-	 * Shortcut to {@link JSONAccess#get} or {@link JSONAccess#set} depending
+	 * Shortcut to {@link JsonAccess#get} or {@link JsonAccess#set} depending
 	 * on parameters.
 	 *
 	 * If there is one parameter (<i>path</i>) provided -- works same as
-	 * {@link "JSONAccess"#get}; (and throws exception if <i>path</i> is
+	 * {@link "JsonAccess"#get}; (and throws exception if <i>path</i> is
 	 * missing).<br/> If there is also <i>value</i> provided -- works same as
-	 * {@link JSONAccess#set}
+	 * {@link JsonAccess#set}
 	 *
 	 * @param {string} path the path
 	 * @param {*} [value] to be set
@@ -171,7 +171,7 @@ function JSONAccess() {
 					useDefault = true;
 					break;
 				} else {
-					throw new Error('JSONAccess: Path "' + path + '" not found and no default value provided');
+					throw new Error('JsonAccess: Path "' + path + '" not found and no default value provided');
 				}
 
 			}
@@ -187,7 +187,7 @@ function JSONAccess() {
 	// private methods
 	function _pathToKeys(path) {
 		if (typeof path != 'string' || !path.trim()) {
-			throw new Error('JSONAccess: Invalid path: "' + path + '" type: ' + (typeof path));
+			throw new Error('JsonAccess: Invalid path: "' + path + '" type: ' + (typeof path));
 		}
 		path = path.toLowerCase();
 		path = path.replace(/\[(\w+)]/g, '/$1');  // convert indexes to properties
@@ -196,7 +196,7 @@ function JSONAccess() {
 		for (var i = 0; i < keys.length; i++) {
 			var key = keys[i].trim();
 			if (key === '') {
-				throw new Error('JSONAccess: Invalid path: "' + path + '" empty key at ' + (i + 1) + '-th slash');
+				throw new Error('JsonAccess: Invalid path: "' + path + '" empty key at ' + (i + 1) + '-th slash');
 			}
 			keys[i] = key;
 		}
@@ -205,7 +205,7 @@ function JSONAccess() {
 
 	function _isJSON(json) {
 		if (typeof json != 'object' || json === null) { // null is object!
-			throw new Error('JSONAccess: trying to set not an object. json: ' + json + ' type: ' + (typeof (json)));
+			throw new Error('JsonAccess: trying to set not an object. json: ' + json + ' type: ' + (typeof (json)));
 		}
 		return true;
 	}
