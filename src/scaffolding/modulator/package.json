@@ -1,0 +1,25 @@
+{
+  "name": "modulator",
+  "version": "0.0.0",
+  "description": "Takes js source file, parses for module name and puts it into tempalte.",
+  "main": "modulator.js",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "gulp": "^3.9.0",
+    "through2": "^2.0.0"
+  },
+  "keywords": [
+    "source",
+    "template"
+  ],
+  "author": {
+    "name": "Yuriy Horobey"
+  },
+  "license": "ISC",
+  "readme": "ERROR: No README data found!",
+  "_id": "modulator@0.0.0",
+  "dist": {
+    "shasum": "d144438002ad979ecbd5280a4719a5e54c2f335a"
+  },
+  "_from": "modulator"
+}

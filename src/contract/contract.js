@@ -18,6 +18,7 @@ function Contract(sl) {
 		}
 		var cn = normalizeContractName(contractName);
 		_contracts[cn] = descriptor;
+		return this;
 	}
 
 	function pre(contractName) {

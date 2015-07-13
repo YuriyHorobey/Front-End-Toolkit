@@ -131,7 +131,7 @@ describe('ServiceLocator', function () {
 
     it('Should throw exception if trying to map to unknown Id', function () {
         expect(function () {
-            SL.map('some bogus id', 'some bogus psudo');
+            SL.map('some bogus psudo', 'some bogus id');
         }).toThrow();
     });
 
@@ -141,12 +141,24 @@ describe('ServiceLocator', function () {
             SL.resolveId('some bogus id');
         }).toThrow();
     });
+
+    it('Should return null instead of throwing exception if trying resolve unknown Id in quiet mode', function () {
+        expect(function () {
+            var res = SL.resolveId('some bogus id', true);
+            expect(res).toBe(null)
+        }).not.toThrow();
+    });
+
     it('Should throw exception if trying resolve unknown pseudo', function () {
         expect(function () {
             SL.resolvePseudo('some bogus psudo');
         }).toThrow();
     });
-
+    it('Should  return null instead of throwing exception if trying resolve unknown pseudo', function () {
+        expect(function () {
+            var res = SL.resolvePseudo('some bogus psudo', true);
+        }).not.toThrow();
+    });
 
     it('Should assign pseudos to registered Provider, throwing exception if provider is not registered', function () {
 
@@ -162,8 +174,8 @@ describe('ServiceLocator', function () {
         SL.register(id1, testValue1);
         SL.register(id2, testValue2);
 
-        SL.map(id1, pseudo1);
-        SL.map(id2, pseudo2);
+        SL.map(pseudo1, id1);
+        SL.map(pseudo2, id2);
 
 
         expect(SL.resolvePseudo(pseudo1)).toBe(testValue1);
@@ -179,13 +191,14 @@ describe('ServiceLocator', function () {
 
         var pseudo1 = 'pseudo1';
         var pseudo2 = 'pseudo2';
+
         var pseudo = [pseudo1, pseudo2];
 
 
         SL.register(id1, testValue1);
 
 
-        SL.map(id1, pseudo);
+        SL.map(pseudo, id1);
 
         expect(SL.resolvePseudo(pseudo1)).toBe(testValue1);
         expect(SL.resolvePseudo(pseudo2)).toBe(testValue1);

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Modulator</title>
+    <script type="text/javascript" src="../utils.js"></script>
+    <script type="text/javascript" src="../../src/service-locator/service-locator.js"></script>
+    <script type="text/javascript">
+        var $L = new ServiceLocator();
+    </script>
+    <script type="text/javascript" src="./build/src/sample-component/sample-component.js"></script>
+    <script type="text/javascript" src="./build/src/sample-component-2/sample-component-2.js"></script>
+    <script>
+        var cmp = $L.resolvePseudo('comp')(1, 2, 3);
+        cmp.test();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

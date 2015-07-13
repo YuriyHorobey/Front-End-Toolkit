@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <title></title>
     <script type="text/javascript" src="../utils.js"></script>
-    <script type="text/javascript" src="../../src/address-bar/address-bar.js"></script>
+    <script type="text/javascript" src="../../build/src/service-locator/service-locator.js"></script>
+    <script type="text/javascript" src="../../build/src/components.js"></script>
     <script type="text/javascript">
-        ab = new AddressBar(window, location);
+        $L.register('global.window', window);
+        $L.register('global.location', window.location);
+        $L.register('global.history', window.history);
+
+        ab = $L.resolveId('AddressBar')();
         ab.onhrefchanged = function (ch) {
             dbg(arguments, "href");
         }
@@ -28,8 +33,8 @@
             cnt++
 
         }
-        window.onpopstate=function(){
-            dbg(11111111)
+        window.onpopstate = function () {
+            dbg(arguments,'POP!')
         }
     </script>
 </head>

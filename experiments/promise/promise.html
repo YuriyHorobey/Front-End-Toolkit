@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Promise</title>
+    <script type="text/javascript" src="../utils.js"></script>
+    <script type="text/javascript" src="../../build/src/service-locator/service-locator.js"></script>
+    <script type="text/javascript" src="../../build/src/components.js"></script>
+    <script type="text/javascript">
+        var Promise = $L.resolveId('Promise')();
+        var p = new Promise();
+        p
+                .then(function (data) {
+                    dbg(data, 'then 1');
+                    return data + ':then 1';
+                })
+                .then(function (data) {
+                    dbg(data, 'then 2');
+                    return data + ':then 2';
+                }, function (reason) {
+                    dbg(reason, 'reject')
+                });
+        p.fulfill('fulfil! ');
+        p.then(function (data) {
+            dbg(data, 'another then');
+        });
+        p.reject('ppx');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

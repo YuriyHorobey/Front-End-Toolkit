@@ -2,56 +2,70 @@
  * Created by yuriy.horobey on 2015-04-21.
  */
 function Validator() {
-	var TYPES = {
-		ARRAY:  '[object Array]',
-		NUMBER: '[object Number]'
-	}
-	var _ts = Object.prototype.toString;
-	return {
-		typeOf:      typeOf,
-		isBoolean:   isBoolean,
-		isNull:      isNull,
-		isUndefined: isUndefined,
-		isNumber:    isNumber,
-		isString:    isString,
 
-		isObject: isObject,
+    return {
+        typeOf:      typeOf,
+        isBoolean:   isBoolean,
+        isNull:      isNull,
+        isUndefined: isUndefined,
+        isNumber:    isNumber,
+        isString:    isString,
 
-		isFunction: isFunction,
-		isArray:    isArray
-	}
+        isObject: isObject,
 
-	function typeOf(val) {
-		//var ret = Object.prototype.toString.call(val).match(/\s([a-zA-Z]+)/)[1];
-		var ret = Object.prototype.toString.call(val);
-		ret = ret.substring(ret.indexOf(' ') + 1, ret.length - 1)
-		return ret;
-	}
+        isFunction: isFunction,
+        isArray:    isArray
+    }
 
-	function isBoolean(val) {
-	}
+    function typeOf(val) {
+        //var ret = Object.prototype.toString.call(val).match(/\s([a-zA-Z]+)/)[1];
+        var ret = Object.prototype.toString.call(val);
+        ret = ret.substring(ret.indexOf(' ') + 1, ret.length - 1)
+        return ret;
+    }
 
-	function isNull(val) {
-	}
+    function isType(val, type) {
+        type = type.trim();
+        var ret = typeOf(val) === type;
+        return ret;
+    }
 
-	function isUndefined(val) {
-	}
+    function isBoolean(val) {
+    }
 
-	function isNumber(val) {
-	}
+    function isNull(val) {
+    }
 
-	function isString(val) {
-	}
+    function isUndefined(val) {
+    }
 
-	function isObject(val) {
-	}
+    function isNumber(val) {
+    }
 
-	function isFunction(val) {
-	}
+    function isString(val) {
+    }
 
-	function isArray(val) {
-		var ret = _ts(val) === TYPES.ARRAY;
-	}
+    function isObject(val) {
+    }
+
+    function isFunction(val) {
+        var ret = isType(val, 'Function');
+        return ret;
+    }
+
+    function isArray(val) {
+        var ret = isType(val, 'Array');
+        return ret;
+    }
+
+//specials :)
+    function isPromise(val) {
+        var ret = isType(val, 'Object');
+        ret = ret && val.hasOwnProperty('resolve') && isFunction(val.resolve);
+        ret = ret && val.hasOwnProperty('fulfill') && isFunction(val.fulfill);
+        ret = ret && val.hasOwnProperty('reject') && isFunction(val.reject);
+        return ret;
+    }
 
 //private
 

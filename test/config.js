@@ -39,7 +39,7 @@ module.exports = function (config) {
 		],
 
 		// list of files to exclude
-		exclude:    ['./src/~deprecated/**/*.*'],
+		exclude:    ['./src/~deprecated/**/*.*','./src/scaffolding/**/*.*','./src/dependencies.js'],
 
 		// test results reporter to use
 		// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'

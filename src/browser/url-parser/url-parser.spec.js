@@ -5,6 +5,7 @@ describe('UrlParser', function () {
     var urlParser;
     var urlParamsMock = {
         parse:   function () {
+            return this;
         },
         combine: function () {
         }
@@ -24,19 +25,6 @@ describe('UrlParser', function () {
                 protocol: "http",
                 search:   "param1=val1&param2=val2",
                 user:     "user"
-            },
-            parsedWithParams: {
-                hash:     "somehash?x=y&z=1",
-                host:     "host:999",
-                hostname: "host",
-                href:     "http://user:pass@host:999/some/path.html?param1=val1&param2=val2#somehash?x=y&z=1",
-                pass:     "pass",
-                pathname: "some/path.html",
-                port:     "999",
-                protocol: "http",
-                search:   "param1=val1&param2=val2",
-                params:   {param1: 'val1', param2: 'val2'},
-                user:     "user"
             }
         }
     ];
@@ -51,7 +39,11 @@ describe('UrlParser', function () {
             expect(urlParser.parse(entry.url)).toEqual(entry.parsed);
         }
     });
-    it('should parse URL into json with parsed params if UrlParams dependency is present', function () {
+    it('should call UrlParams.parse and add UrlParams as "params" key if UrlParams dependency is present', function () {
+        spyOn(urlParamsMock, 'parse').and.callThrough();
+        var res =urlParserWithParams.parse(data[0]);
+        expect(urlParamsMock.parse).toHaveBeenCalledWith(data[0].search)
+        expect(res["params"]).toBe(urlParamsMock);
     });
     it('should combine valid URL from json', function () {
     });

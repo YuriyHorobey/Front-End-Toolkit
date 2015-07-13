@@ -4,7 +4,31 @@
 function UrlParser(urlParams) {
     //0:full url 1: protocol, 3: user:pass, 4: host:port 5:path, 7:query, 9:hash
     const URL_REGEXP = /^([^/]+):\/\/(([^@]+)@)?([^/]+)\/?([^?#]+)?(\?([^#]*))?(#(.*))?/;
-    return {parse: parse, combine: combine}
+    return {
+        parse:   parse,
+        combine: combine
+    }
+    /**
+     * Takes url and returns it parsed.
+     *
+     * Structure of  return:
+     * {
+        hash:     "somehash?x=y&z=1",
+        host:     "host:999",
+        hostname: "host",
+        href:     "http://user:pass@host:999/some/path.html?param1=val1&param2=val2#somehash?x=y&z=1",
+     params:   UrlParser, //if given as dependency
+     pass: "pass",
+     pathname: "some/path.html",
+     port:     "999",
+     protocol: "http",
+     search:   "param1=val1&param2=val2",
+     user:     "user"
+     }
+     *
+     * @param url
+     * @returns {{}}
+     */
     function parse(url) {
         var parts = URL_REGEXP.exec(url);
         var ret = {};
@@ -28,8 +52,8 @@ function UrlParser(urlParams) {
             ret.hash = parts[9] || '';
         }
         if (urlParams) {
-            var params = urlParams.parse(ret.search);
-            ret.params = params;
+            urlParams.parse(ret.search);
+            ret.params = urlParams;
         }
         return ret;
     }

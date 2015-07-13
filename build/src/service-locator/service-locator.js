@@ -1,4 +1,6 @@
-/**
+;
+(function () {
+    /**
  * Created by yh on 2015-03-23.
  */
 
@@ -116,3 +118,6 @@ function ServiceLocator() {
         return ret;
     }
 }
+;
+    window['$L'] = new ServiceLocator();
+})();

@@ -1,52 +1,30 @@
 /**
  * Created by yuriy.horobey on 2015-06-09.
  */
-function AddressBar(window, location) {
-    //0:full url 1: protocol, 3: user:pass, 4: host:port 5:path, 7:query, 9:hash
-    var URL_REGEXP = /^([^/]+):\/\/(([^@]+)@)?([^/]+)\/?([^?#]+)?(\?([^#]*))?(#(.*))?/;
-    var _oldHref = '';
-    var _oldLocation = new Location();
-    var _Obj = this;
+function AddressBar(window, location, urlParser, history) {
 
+    var _oldHref = null;
+    var _oldParsedUrl = {}
     //init
-
     _addEventListeners();
 
 
     var _export = {
         getLocation: getLocation,
-        parse:       parse
+        check:       check
+
     };
     return _export;
 
+
     //public
-    function parse(url) {
-        var parts = URL_REGEXP.exec(url);
-        var ret = new Location();
-        if (parts) {
-            ret.href = parts[0] || '';
-            ret.protocol = parts[1] || '';
 
-            var userPass = (parts[3] || '').trim().split(':');
-            ret.user = userPass[0] || '';
-            ret.pass = userPass[1] || '';
-
-            var hostPort = (parts[4] || '').trim().split(':');
-            ret.host = parts[4] || '';
-            ret.hostname = hostPort[0] || '';
-            ret.port = hostPort[1] || '';
-
-            ret.pathname = parts[5] || '';
-
-            ret.search = parts[7] || '';
-
-            ret.hash = parts[9] || '';
-        }
-        return ret;
+    function check() {
+        return _urlChangedCallback();
     }
 
     function getLocation() {
-        var ret = new Location(_oldLocation);
+
         return ret;
     }
 
@@ -70,19 +48,28 @@ function AddressBar(window, location) {
         }
     }
 
+    /**
+     * Callback for any url change.
+     * @private
+     */
     function _urlChangedCallback() {
         if (_oldHref == location.href) {
             return;
         }
-        var newLocation = parse(location.href);
+        _oldHref = location.href
+        var parsedUrl = {href: location.href};
+        if (urlParser) {
+            parsedUrl = urlParser.parse(location.href);
+        }
+        //var newLocation = parse(location.href);
         var changes = {};
-        for (var entry in newLocation) {
-            if (newLocation[entry] != _oldLocation[entry]) {
+        for (var entry in parsedUrl) {
+            if (parsedUrl[entry] != _oldParsedUrl[entry]) {
 
 
                 changes[entry] = {
-                    "old": _oldLocation[entry],
-                    "new": newLocation[entry]
+                    "old": _oldParsedUrl[entry],
+                    "new": parsedUrl[entry]
                 }
 
 
@@ -94,10 +81,9 @@ function AddressBar(window, location) {
                 _export[callbackName].call(null, changes);
             }
         }
-        _oldLocation = newLocation;
-        _oldHref = location.href;
-    }
+        _oldParsedUrl = parsedUrl;
 
+    }
 
 
 }

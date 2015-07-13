@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../utils.js"></script>
+    <script type="text/javascript" src="../../build/src/service-locator/service-locator.js"></script>
+    <script type="text/javascript" src="../../build/src/components.js"></script>
+    <script type="text/javascript">
+        $L.register('global.window', window);
+        $L.register('global.location', window.location);
+        $L.register('global.history', window.history);
+
+        var bl = $L.resolveId('BrowserLocation')();
+        bl.onhrefchanged = function (ch) {
+            dbg(arguments, "href");
+        }
+        bl.onhashchanged = function (ch) {
+            dbg(arguments, "hash");
+        }
+
+        bl.onhrefchanged = function () {
+            dbg(arguments, 'bl.href')
+        }
+
+        var hs = $L.resolveId('BrowserHistory')();
+
+        var prm = $L.resolveId('UrlParams')();
+        bl.onsearchchanged = function (changes) {
+            dbg(changes, 'search');
+
+        };
+
+        var cnt = 1;
+        function changeState() {
+            var st = {"id": "" + cnt};
+
+            hs.pushState(st, '', '/experiments/browser/location.html?c=' + cnt);
+            cnt++
+            return false;
+        }
+        function repSt() {
+            var st = {"id": "" + cnt};
+
+            hs.replaceState(st, '', null);
+            cnt++
+
+        }
+        window.onpopstate = function () {
+            dbg(arguments, 'POP!')
+        }
+    </script>
+</head>
+<body>
+<h1>Location</h1>
+<a href="#qqq">hash</a>
+<br>
+<a href="?x=1">query 1</a>
+<br>
+<a href="?x=2">query 2</a>
+<br>
+<a href="#" onclick="return changeState()">State</a><br>
+<button onclick="changeState()">State</button>
+<button onclick="repSt()">reState</button>
+</body>
+</html>

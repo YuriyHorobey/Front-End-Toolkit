@@ -1,0 +1,33 @@
+{
+  "name": "front-end-toolkit",
+  "version": "0.0.1",
+  "description": "A toolkit to build frontend applications",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuriyHorobey/Front-End-Toolkit.git"
+  },
+  "keywords": [
+    "frontend",
+    "toolkit",
+    "library"
+  ],
+  "author": "Yuriy Horobey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuriyHorobey/Front-End-Toolkit/issues"
+  },
+  "homepage": "https://github.com/YuriyHorobey/Front-End-Toolkit#readme",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "modulator": "file:src\\scaffolding\\modulator"
+  }
+}
