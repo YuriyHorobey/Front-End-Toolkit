@@ -114,7 +114,7 @@ module.exports = {
         }
     },
     'promise/promise':                           {
-        concat:    ['promise.contract'],
+        concat:    ['promise-contract'],
         registrar: function PromiseRegistrar() {
 
             function PromiseBuilder() {

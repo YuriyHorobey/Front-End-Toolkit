@@ -59,7 +59,8 @@ function modulator(configFile, templateFileName, serviceLocatorVarName) {
         registrar = registrar.toString();
         var concat = configEntry.concat;
         if (concat) {
-            fileContents = concatenate(fileContents, concat);
+            var concatPathParsed = path.parse(file.path);
+            fileContents = concatenate(fileContents, concatPathParsed.dir + path.sep, concat);
         }
         template = processTemplate(template, fileContents, registrar, serviceLocatorVarName);
 
@@ -77,7 +78,7 @@ function modulator(configFile, templateFileName, serviceLocatorVarName) {
     return stream;
 };
 
-function concatenate(fileContents, concat) {
+function concatenate(fileContents, dir, concat) {
     if (Object.prototype.toString.call(concat) !== '[object Array]') {
         console.log(chalk.yellow('Warning: wrong value for concat, skipping'));
         return fileContents;
@@ -87,7 +88,12 @@ function concatenate(fileContents, concat) {
         if (file.substr(-3) !== '.js') {
             file += '.js';
         }
-        fileContents += fs.readFileSync(file).toString();
+        try {
+            concatContents = fs.readFileSync(dir + file).toString();
+        }catch(e){
+            throw new Error('Unable to concat file: "'+dir+file+'".\nOriginal error: '+e);
+        }
+        fileContents += concatContents;
     }
     return fileContents;
 }
