@@ -129,6 +129,26 @@ module.exports = {
             $L.register('Promise', PromiseBuilder);
         }
     },
+    'router/router':                             {
+        concat:    ['router-contract'],
+        registrar: function RouterRegistrar() {
+            var router;
+
+            function RouterBuilder() {
+                if (!Router.prototype.contract) {
+                    var contract = new ($L.resolveId('Contract'));
+                    var validator = $L.resolveId('Validator');
+                    Router.prototype.contract = new Router(contract, validator);
+                }
+                if (router) {
+                    router = new Router();
+                }
+                return router;
+            }
+
+            $L.register('Router', RouterBuilder);
+        }
+    },
     'contract/contract':                         {
         registrar: function ContractRegistrar() {
             $L.register('Contract', Contract);
