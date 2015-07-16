@@ -4,34 +4,21 @@
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
     <script type="text/javascript" src="utils.js"></script>
-    <script type="text/javascript" src="../src/contract/$contract.js"></script>
+    <script type="text/javascript" src="../src/contract/contract.js"></script>
     <script>
-        var $c = new Contract();
-        $c.describe('f', {
-            pre:  function (a, b, c) {
-                dbg(a, 'preA');
-                dbg(b, 'preB');
-                dbg(c, 'preC');
-
-            },
-            post: function (ret) {
-                dbg(ret, 'postRet');
-                return ret;
-            }
-        });
-
-        function f(a, b, c) {
-            $c.pre(null, a, b, c);
-            var ret = 1;
-            try {
-                $c.post('f', ret);
-                return ret;
-            } catch (e) {
-                dbg(e)
+        function MyObj(cn) {
+            this.m = function (a, b, c) {
+                cn.pre('m', a, b, c);
             }
         }
-        var ret = f(1, 2, 3);
-        dbg(ret, 'RET');
+        var $c = new Contract();
+        $c.describe('m', {
+            pre: function (a, b, c) {
+                $c.error('some bullshit arguments!');
+            }
+        })
+        var obj = new MyObj($c);
+        obj.m();
     </script>
 
 </head>
