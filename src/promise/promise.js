@@ -110,18 +110,5 @@ function Promise(successHandler, failureHandler, anywayHandler) {
         }
     }
 
-    function _isFunction(subject) {
-        var test = Object.prototype.toString.call(subject);
-        var ret = test == 'object Function';
-        return ret;
-    }
 
-    function _isPromise(subject) {
-        var test = Object.prototype.toString.call(subject);
-        var ret = test == 'object Object';
-        ret = ret && subject.hasOwnProperty('resolve') && _isFunction(subject.resolve);
-        ret = ret && subject.hasOwnProperty('fulfill') && _isFunction(subject.fulfill);
-        ret = ret && subject.hasOwnProperty('reject') && _isFunction(subject.reject);
-        return ret;
-    }
 }

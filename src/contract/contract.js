@@ -1,14 +1,13 @@
 /**
  * Created by yuriy.horobey on 2015-04-21.
  */
-function Contract(sl) {
+function Contract() {
     var _contracts = {};
     return {
         exists:   contractExists,
         describe: describe,
         pre:      pre,
-        post:     post,
-        error:    error
+        post:     post
     };
     //public
     function describe(contractName, descriptor) {
@@ -42,24 +41,6 @@ function Contract(sl) {
         return ret;
     }
 
-    function error(message) {
-        throw new Error();
-        try {
-
-            throw new Error();
-        } catch (e) {
-
-            var stack = [];
-            stack = e.stack.split('at ');
-            var source = stack[4].substring(0, stack[4].indexOf(' '));
-
-            var contract = stack[3].substring(0, stack[3].indexOf(' '));
-
-            contract = contract == 'Object.pre' ? 'pre-conditions' : 'post-conditions';
-            var ret = new Error('Contract for ' + source + '() ' + contract + ' violated: ' + message);
-            throw ret;
-        }
-    }
 
     //private
 

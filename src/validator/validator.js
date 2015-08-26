@@ -14,7 +14,9 @@ function Validator() {
         isObject: isObject,
 
         isFunction: isFunction,
-        isArray:    isArray
+        isArray:    isArray,
+
+        isPromise: isPromise
     }
 
     function typeOf(val) {
@@ -31,21 +33,33 @@ function Validator() {
     }
 
     function isBoolean(val) {
+        var ret = isType(val, 'Boolean');
+        return ret;
     }
 
     function isNull(val) {
+        var ret = isType(val, 'Null');
+        return ret;
     }
 
     function isUndefined(val) {
+        var ret = isType(val, 'Undefined');
+        return ret;
     }
 
     function isNumber(val) {
+        var ret = isType(val, 'Number') && isFinite(val);
+        return ret;
     }
 
     function isString(val) {
+        var ret = isType(val, 'String');
+        return ret;
     }
 
     function isObject(val) {
+        var ret = isType(val, 'Object');
+        return ret;
     }
 
     function isFunction(val) {
@@ -58,12 +72,19 @@ function Validator() {
         return ret;
     }
 
+
 //specials :)
     function isPromise(val) {
         var ret = isType(val, 'Object');
         ret = ret && val.hasOwnProperty('resolve') && isFunction(val.resolve);
         ret = ret && val.hasOwnProperty('fulfill') && isFunction(val.fulfill);
         ret = ret && val.hasOwnProperty('reject') && isFunction(val.reject);
+        return ret;
+    }
+
+    function isNumeric(val) {
+        val = Number(val);
+        var ret = isType(val, 'Number');
         return ret;
     }
 
